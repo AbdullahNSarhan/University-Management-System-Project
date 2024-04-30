@@ -15,30 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\New folder (2)\AcademicStaff.h">
+    <ClInclude Include="AcademicStaff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\Course.h">
+    <ClInclude Include="Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\FileInput.h">
+    <ClInclude Include="Examination.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\Menu.h">
+    <ClInclude Include="FileInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\Student.h">
+    <ClInclude Include="Gradebook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\University.h">
+    <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\New folder (2)\User.h">
+    <ClInclude Include="Student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="University.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\New folder (2)\main.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -131,16 +131,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\New folder (2)\AcademicStaff.h" />
-    <ClInclude Include="..\New folder (2)\Course.h" />
-    <ClInclude Include="..\New folder (2)\FileInput.h" />
-    <ClInclude Include="..\New folder (2)\Menu.h" />
-    <ClInclude Include="..\New folder (2)\Student.h" />
-    <ClInclude Include="..\New folder (2)\University.h" />
-    <ClInclude Include="..\New folder (2)\User.h" />
+    <ClInclude Include="AcademicStaff.h" />
+    <ClInclude Include="Course.h" />
+    <ClInclude Include="Examination.h" />
+    <ClInclude Include="FileInput.h" />
+    <ClInclude Include="Gradebook.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Student.h" />
+    <ClInclude Include="University.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\New folder (2)\main.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
