@@ -51,9 +51,11 @@ public:
             switch (option)
             {
             case 1:
+                system("CLS");
                 Uni_SelectFunction.User_sellectOption();
                 break;
             case 2:
+                system("CLS");
 				authentication = login();
 				if (!authentication) {
 					break;
@@ -62,9 +64,11 @@ public:
                
                 break;
             case 3:
+                system("CLS");
                
                 break;
             case 4:
+                system("CLS");
                 authentication = adminLogin();
                 if (!authentication) {
 					break;
@@ -72,6 +76,7 @@ public:
                 adminOption();
                 break;
             case 5:
+                system("CLS");
                 break;
             default:
                 cout << "Invalid option. Please choose again.\n";
@@ -177,21 +182,27 @@ public:
             switch (option)
             {
             case 1:
+                system("CLS");
                 addStudents();
                 break;
             case 2:
+                system("CLS");
                 removeStudent();
                 break;
             case 3:
+                system("CLS");
                 updateStudents();
                 break;
             case 4:
+                system("CLS");
                 displayStudents();
                 break;
             case 5:
+                system("CLS");
                 Uni_SelectFunction.admin_UniSelectOption();
                 break; 
             case 6:
+                system("CLS");
                     break;
             default:
                 cout << "Invalid option. Please choose again.\n";

@@ -8,8 +8,8 @@ using namespace std;
 class University {
 private:
 
-    const string name = " MSA University ";
-    const string location = " 6th of October ";
+    string name = " MSA University ";
+    string location = " 6th of October ";
     vector <string> colleges;
     vector <vector<string>> departments;
     int choice;
@@ -124,27 +124,34 @@ public:
 
             switch (choice) {
             case 1: {
+                system("CLS");
                 cout << "\nName : " << name << endl;
                 cout << "Location : " << location << endl;
+                Edit_About_University();
                 break;
             }
             case 2: {
+                system("CLS");
                 addCollege();
                 break;
             }
             case 3: {
+                system("CLS");
                 addDepartment();
                 break;
             }
             case 4: {
+                system("CLS");
                 getColleges();
                 break;
             }
             case 5: {
+                system("CLS");
                 getDepartments();
                 break;
             }
             case 6: {
+                system("CLS");
                 cout << "Exiting..........\n";
                 break;
             }
@@ -170,19 +177,23 @@ public:
 
 			switch (choice) {
 			case 1: {
+                system("CLS");
 				cout << "\nName : " << name << endl;
 				cout << "Location : " << location << endl;
 				break;
 			}
 			case 2: {
+                system("CLS");
 				getColleges();
 				break;
 			}
 			case 3: {
+                system("CLS");
 				getDepartments();
 				break;
 			}
 			case 4: {
+                system("CLS");
 				cout << "Exiting..........\n";
 				break;
 			}
@@ -193,7 +204,15 @@ public:
 		} while (choice != 4);
 
 	}
-
- };
+    void Edit_About_University() {
+        cout << "Enter the new name of the university: ";
+        getline(cin, name);
+        cin.ignore();
+        cout << "Enter the new location of the university: ";
+        getline(cin, location);
+        cin.ignore();
+        cout << "University information updated successfully.\n";
+    }
+};
 
 #endif

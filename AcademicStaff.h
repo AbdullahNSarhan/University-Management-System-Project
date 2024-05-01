@@ -33,10 +33,6 @@ public:
 		} while (true);
     }
     void get_TeachCourse() {
-		cout << "The courses you are teaching are: \n";
-		for (int i = 0; i < CoursesTaught.size(); i++) {
-			cout << CoursesTaught[i] << endl;
-		}
 	}
 
     void gradeAssignment() {
