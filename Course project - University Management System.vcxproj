@@ -133,9 +133,7 @@
   <ItemGroup>
     <ClInclude Include="AcademicStaff.h" />
     <ClInclude Include="Course.h" />
-    <ClInclude Include="Examination.h" />
     <ClInclude Include="FileInput.h" />
-    <ClInclude Include="Gradebook.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="University.h" />

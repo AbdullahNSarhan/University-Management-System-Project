@@ -5,46 +5,65 @@
 #include <string>
 #include "User.h"
 #include "Student.h"
+#include "Course.h"
+#include "menu.h"
 using namespace std;
 
 class AcademicStaff : public User {
-
 private:
-
-    vector<string> CoursesTaught;
+    vector<int> CoursesTaught;
     string department;
     char char_check;
-
-public:
-    
-    void Set_TeachCourse() {
-		do {
-			cout << "Enter the name of the course you want to teach: ";
-			if (!CoursesTaught.empty()) {
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			}
-			getline(cin, department);
-			CoursesTaught.push_back(department);
-			cout << "Do you want to teach another course (y/n): ";
-			cin >> char_check;
-			if (char_check == 'n' || char_check == 'N') {
-				break;
-			}
-		} while (true);
+	int int_check;	
+public:   
+    void Set_TeachCourse(int course_num) {     
+		CoursesTaught.push_back(course_num);
     }
-    void get_TeachCourse() {
-	}
-
-    void gradeAssignment() {
-        
-    }
-
     void viewStudentList() {
     }
-
+    void update_studentsGrade() {
+	}
     void Schedule_OfficeHours() {
     }
-
+    void AcademicStaff_Menu() {
+		cout << "Welcome to the Academic Staff Menu" << endl;
+		cout << "1-View Courses Taught" << endl;
+        cout << "2-Teach Course" << endl;
+		cout << "3-Grade Assignment" << endl;
+		cout << "4-Change password" << endl;
+		cout << "5-Schedule Office Hours" << endl;
+		cout << "6-Exit" << endl;
+	}
+    void setAcademicStaff_information() {
+         cout << "Enter Staff name: ";
+         cin.ignore();
+         getline(cin, Username);
+         cout << "Enter Staff ID: ";
+         cin >> UserID;
+         cout << "Enter Staff college: ";
+         cin.ignore();
+         getline(cin, college);
+         cout << "Enter Staff department: ";
+         getline(cin, department);
+         cout << "Enter role (1-Student, 2-Teacher, 3-Admin): ";
+         cin >> Role;
+         cout << "Enter Staff email: ";
+         cin.ignore();
+         getline(cin, Email);
+         cout << "Enter Staff password: ";
+         getline(cin, Password);
+    }
+    void getAcademicStaff_information() {
+		cout << "Staff name: " << Username << endl;
+		cout << "Staff ID: " << UserID << endl;
+		cout << "Staff college: " << college << endl;
+		cout << "Staff department: " << department << endl;
+		cout << "Staff role: " << Role << endl;
+		cout << "Staff email: " << Email << endl;
+		cout << "Staff password: " << Password << endl;
+	}
+    vector <int> get_CoursesTaught() {
+        return CoursesTaught;
+    }
 };
-
 #endif

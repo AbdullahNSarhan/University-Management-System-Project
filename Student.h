@@ -11,7 +11,7 @@ class Student : public User
 {
 private:
 
-     vector <Course> CoursesEnrolled;
+     vector <int> Courses_Enrolled;
      Course course_obj;
      string Student_department;
      char Courses_Enrolled_char;
@@ -19,26 +19,13 @@ private:
 
 public:
      
-     void setEnrollCourse(){
-        do {
-            course_obj.setCourse();
-            CoursesEnrolled.push_back(course_obj);
-            cout << "Do you want to enroll in another course (y/n): ";
-            cin >> Courses_Enrolled_char;
-            if (Courses_Enrolled_char == 'n' || Courses_Enrolled_char == 'N') {
-				break;
-			}
-         } while (true);
+     void SetEnrollCourse(int course_num){
+		 Courses_Enrolled.push_back(course_num);      
      }
-
-     void getEnrollCourse() {
-         cout << "Your Enrolled Courses are :\n";
-		 for (int i = 0; i < CoursesEnrolled.size(); i++) {
-			 cout << i + 1 << "- " << CoursesEnrolled[i].getCourseName() << endl;
-		 }
+     vector <int> get_CoursesEnrolled() {
+         return Courses_Enrolled;
      }
-        
-     void calculateGPA(){
+     /*void calculateGPA(){
          double sum1 = 0,sum2 = 0;
 		 for (int i = 0; i < CoursesEnrolled.size(); i++) {
              if(CoursesEnrolled[i].getGrade() >= 93 && CoursesEnrolled[i].getGrade() <= 100) sum1 += 4.0 * CoursesEnrolled[i].getCreditHours();
@@ -55,8 +42,7 @@ public:
              sum2 += CoursesEnrolled[i].getCreditHours();
 		 }
          cout << "Your GPA is : " << sum1/sum2 << endl;
-     }
-     
+     }    
      void updateGrade() {
          do {
              cout << "Your Enrolled Courses grades is :\n";
@@ -84,23 +70,20 @@ public:
                  break;
              }
          } while (true);
-     }
-
+     }*/
      void studentMenu() {
-
+         cout << "============================\n";
          cout << "Welcome to the Student Menu\n"
               << "============================\n"
               << "Hello " << getUserName() << endl;
-
          if(getUserRole() == 1){
-			 cout << "Role : Student\n";
+		 cout << "Role : Student\n";
 		 }
 		 else if(getUserRole() == 2){
-			 cout << "Role : Teacher\n";
+		 cout << "Role : Teacher\n";
 		 }
 		 else if(getUserRole() == 3){
-			 cout << "Role : Admin\n";}
-
+		 cout << "Role : Admin\n";}
          cout << "ID : " << getUserID() << endl
               << "College : " << getUserCollege() << endl
               << "Department : " << Student_department << endl
@@ -113,44 +96,7 @@ public:
 			  << "3- Update Grade\n"
               << "4- change password\n"
 			  << "5- Logout\n";
-
      }
-
-     void studentOptions() {
-
-		 int option;
-		 do {
-			 studentMenu();
-			 cout << "Enter your option : ";
-			 cin >> option;
-			 switch (option) {
-			 case 1:
-                 system("CLS");
-				 getEnrollCourse();
-				 break;
-			 case 2:
-                 system("CLS");
-				 calculateGPA();
-				 break;
-			 case 3:
-                 system("CLS");
-				 updateGrade();
-				 break;
-			 case 4:
-                 system("CLS");
-				 changePassword();
-				 break;
-			 case 5:
-				 cout << "You have been logged out\n";
-				 break;
-			 default:
-				 cout << "Invalid option\n";
-				 break;
-			 }
-		 } while (option != 5);
-
-	 }
-
      void SetStudent_information() {
 
          cout << "Enter student name: ";
@@ -172,9 +118,7 @@ public:
          getline(cin, Password);
 
 	 }
-
 	 void GetStudent_information() {
-
 		 cout << "Student name: " << Username << endl
 			  << "Student ID: " << UserID << endl
               << "Student college: " << college << endl
@@ -182,8 +126,6 @@ public:
 			  << "Student role: " << Role << endl
 			  << "Student email: " << Email << endl
 			  << "Student password: " << Password << endl;
-
 	 }
 };
-
 #endif

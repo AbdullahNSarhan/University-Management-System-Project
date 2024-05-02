@@ -38,7 +38,6 @@ public:
 		cout << "\nEnter your choice: ";
 
 	}
-
     void addCollege() {
 
         string collegeName;
@@ -49,7 +48,6 @@ public:
         departments.push_back(vector<string>());
         cout << "College added successfully.\n";
     }
-
     void addDepartment() {
 
         if (colleges.empty()) {
@@ -76,8 +74,6 @@ public:
         departments[collegeIndex - 1].push_back(departmentName);
         cout << "Department added successfully to " << colleges[collegeIndex - 1] << ".\n";
     }
- 
-
     void getColleges() {
 
         cout << "\nCurrent list of colleges:\n";
@@ -92,7 +88,6 @@ public:
         }
 
     }
-
     void getDepartments() {
 
         cout << "\nDepartments in each college:\n";
@@ -109,7 +104,6 @@ public:
             cout << endl;
         }
     }
-
     void admin_UniSelectOption() {
         
         do {
@@ -162,7 +156,6 @@ public:
         } while (choice != 6);
 
     }
-
     void User_sellectOption() {
 
 		do {
@@ -214,5 +207,4 @@ public:
         cout << "University information updated successfully.\n";
     }
 };
-
 #endif

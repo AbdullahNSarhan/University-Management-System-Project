@@ -21,13 +21,7 @@
     <ClInclude Include="Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Examination.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FileInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Gradebook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
