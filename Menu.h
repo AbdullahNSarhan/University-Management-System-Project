@@ -23,11 +23,11 @@ private:
     AcademicStaff academicStaff;
     string User_inputPassword;
     vector <int> Courses_Numbers;
+    vector <double> Courses_Grades;
     int User_inputId;
     int User_Index = 0;
     bool authentication;
     char Courses_added_char;
-
 public:
     void displayMenu()
     {
@@ -71,8 +71,8 @@ public:
                 system("CLS");
                 authentication = login();
                 if (!authentication) {
-					break;
-				}
+                    break;
+                }
                 AcademicStaff_SelectOptions();
                 break;
             case 4:
@@ -173,14 +173,16 @@ public:
             << "1-Add Student\n"
             << "2-Remove Student\n"
             << "3-Display Student\n"
-            << "4-Add Academic Staff\n"
-            << "5-Remove Academic Staff\n"
-            << "6-Display Academic Staff\n"
-            << "7-Add courses\n"
-            << "8-Display courses\n"
-            << "9-University options\n"
-            << "10-Change admin information\n"
-            << "11-Exit\n";
+            << "4-Edit Student\n"
+            << "5-Add Academic Staff\n"
+            << "6-Remove Academic Staff\n"
+            << "7-Display Academic Staff\n"
+            << "8-Edit Academic Staff\n"
+            << "9-Add courses\n"
+            << "10-Display courses\n"
+            << "11-University options\n"
+            << "12-Change admin information\n"
+            << "13-Exit\n";
     }
     void adminOption()
     {
@@ -213,41 +215,69 @@ public:
                 displayStudents();
                 break;
             case 4:
+                do {
+                    system("CLS");
+                    select_student();
+                    cout << "What would you like to edit?\n";
+                    cout << "1-Edit Student Information\n"
+                         << "2-Edit Student Courses\n"
+                         << "3-Exit\n";
+                    cout << "Enter option number: " << endl;
+                    cin >> option;
+                    switch (option)
+                    {
+                    case 1:
+                        Student_Information[User_Index].Edit_StudentInformation();
+                        break;
+                    case 2:
+                        Student_DisplayEnrolledCourses();
+                        Student_SetEnrolledCourses();
+                        break;
+                    default:
+                        break;
+                    }
+                } while (option != 3);
+				break;
+            case 5:
                 system("CLS");
                 addAcademicStaff();
                 break;
-            case 5:
-                system("CLS");
-
-                break;
             case 6:
                 system("CLS");
-                displayAcademicStaff();
+                /*remove*/
                 break;
             case 7:
                 system("CLS");
-                Add_Courses();
+                displayAcademicStaff();
                 break;
             case 8:
                 system("CLS");
-                getAddedCourses();
+                /*editAcademicStaff();*/
                 break;
             case 9:
                 system("CLS");
-                Uni_SelectFunction.admin_UniSelectOption();
+                Add_Courses();
                 break;
             case 10:
                 system("CLS");
-                changeAdminInformation();
+                getAddedCourses();
                 break;
             case 11:
+                system("CLS");
+                Uni_SelectFunction.admin_UniSelectOption();
+                break;
+            case 12:
+                system("CLS");
+                changeAdminInformation();
+                break;
+            case 13:
                 system("CLS");
                 break;
             default:
                 cout << "Invalid option. Please choose again.\n";
                 break;
             }
-        } while (option != 11);
+        } while (option != 13);
     }
     void addStudents()
     {
@@ -264,16 +294,16 @@ public:
         }
     }
     void addAcademicStaff()
-	{
-		academicStaff.setAcademicStaff_information();
-		AcademicStaff_Information.push_back(academicStaff);
-	}
+    {
+        academicStaff.setAcademicStaff_information();
+        AcademicStaff_Information.push_back(academicStaff);
+    }
     void displayAcademicStaff() {
         for (int i = 0; i < AcademicStaff_Information.size(); i++)
-		{
-			cout << "====================\n" << "Academic Staff " << i + 1 << endl << "====================\n";
-			AcademicStaff_Information[i].getAcademicStaff_information();
-		}
+        {
+            cout << "====================\n" << "Academic Staff " << i + 1 << endl << "====================\n";
+            AcademicStaff_Information[i].getAcademicStaff_information();
+        }
     }
     void removeStudent()
     {
@@ -376,23 +406,23 @@ public:
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
-            if(option > 0 && option <= CoursesEnrolled.size()) {
+            if (option > 0 && option <= CoursesEnrolled.size()) {
                 AcademicStaff_Information[User_Index].Set_TeachCourse(option);
-				cout << "Course added successfully" << endl;
-			}
+                cout << "Course added successfully" << endl;
+            }
             else if (CoursesEnrolled.size() == 0) {
                 cout << "No courses available" << endl;
             }
-            else{
-				cout << "Invalid input, please try again" << endl;
+            else {
+                cout << "Invalid input, please try again" << endl;
                 continue;
-			}
+            }
             Courses_added_char = 'y';
             cout << "Do you want to add another course (y/n): ";
             cin >> Courses_added_char;
             if (Courses_added_char == 'n' || Courses_added_char == 'N') {
-				break;
-			}
+                break;
+            }
         } while (true);
     }
     void AcademicStaff_DisplayTeachingCourses() {
@@ -408,38 +438,39 @@ public:
             cout << i + 1 << "- " << CoursesEnrolled[i].getCourseName() << endl;
         }
         do {
-			cout << "Please enter the number of the option you would like to select: ";
-			int option;
-			while (!(cin >> option))
-			{
-				cout << "Invalid input. Please enter a valid integer.\n";
-				cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			}
+            cout << "Please enter the number of the course you would like to enroll: ";
+            int option;
+            while (!(cin >> option))
+            {
+                cout << "Invalid input. Please enter a valid integer.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
             if (option > 0 && option <= CoursesEnrolled.size()) {
-                Student_Information[User_Index].SetEnrollCourse(option);
-            }else if (CoursesEnrolled.size() == 0) {
-				cout << "No courses available" << endl;
-			}
+                Student_Information[User_Index].SetEnrollCourse(option-1);
+            }
+            else if (CoursesEnrolled.size() == 0) {
+                cout << "No courses available" << endl;
+            }
             else {
-				cout << "Invalid input, please try again" << endl;
+                cout << "Invalid input, please try again" << endl;
                 continue;
-			}
+            }
             Courses_added_char = 'y';
-            cout << "Do you want to add another course (y/n): ";
-			cin >> Courses_added_char;
+            cout << "Do you want to enroll another course (y/n): ";
+            cin >> Courses_added_char;
             if (Courses_added_char == 'n' || Courses_added_char == 'N') {
                 break;
             }
         } while (true);
     }
     void Student_DisplayEnrolledCourses() {
-		Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
-		cout << "The Courses are :\n";
-		for (int i = 0; i < Courses_Numbers.size(); i++) {
-			cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
-		}
-	}
+        Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
+        cout << "The Courses are :\n";
+        for (int i = 0; i < Courses_Numbers.size(); i++) {
+            cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
+        }
+    }
     void student_SelectOptions() {
 
         int option;
@@ -454,11 +485,11 @@ public:
                 break;
             case 2:
                 system("CLS");
-                /*Student_Information[User_Index].calculateGPA();*/
+                calculateGPA();
                 break;
             case 3:
                 system("CLS");
-                /*Student_Information[User_Index].updateGrade();*/
+                Update_StudentGrade();
                 break;
             case 4:
                 system("CLS");
@@ -474,5 +505,82 @@ public:
         } while (option != 5);
 
     }
+    void calculateGPA() {
+        Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
+        Courses_Grades = Student_Information[User_Index].get_Grades();
+        double sum1 = 0, sum2 = 0;
+        for (int i = 0; i < Courses_Numbers.size(); i++) {
+            if (Courses_Grades[i] >= 93 && Courses_Grades[i] <= 100) sum1 += 4.0 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 89 && Courses_Grades[i] <= 93) sum1 += 3.67 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 84 && Courses_Grades[i] <= 89) sum1 += 3.33 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 80 && Courses_Grades[i] <= 84) sum1 += 3.0 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 76 && Courses_Grades[i] <= 80) sum1 += 2.67 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 73 && Courses_Grades[i] <= 76) sum1 += 2.33 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 70 && Courses_Grades[i] <= 73) sum1 += 2.0 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 67 && Courses_Grades[i] <= 70) sum1 += 1.67 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 64 && Courses_Grades[i] <= 67) sum1 += 1.33 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 60 && Courses_Grades[i] <= 64) sum1 += 1.0 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            else if (Courses_Grades[i] >= 0 && Courses_Grades[i] <= 60) sum1 += 0.0 * CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+            sum2 += CoursesEnrolled[Courses_Numbers[i]].getCreditHours();
+        }
+        cout << "Student total GPA is : " << sum1 / sum2 << endl;
+    }
+    void Update_StudentGrade() {
+        Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
+        Courses_Grades = Student_Information[User_Index].get_Grades();
+        cout << "The Courses are :\n";
+        if (Courses_Numbers.size() == 0) {
+			cout << "No courses available" << endl;
+			return;
+		}
+        for (int i = 0; i < Courses_Numbers.size(); i++) {
+            cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
+        }
+        do {
+            cout << "Please enter the number of course you want to update: ";
+            int option;
+            while (!(cin >> option))
+            {
+                cout << "Invalid input. Please enter a valid integer.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (option > 0 && option <= Courses_Numbers.size()) {
+                cout << "Enter the new grade: ";
+                double newGrade;
+                while (!(cin >> newGrade) && newGrade >= 0 && newGrade <= 100)
+                {
+                    cout << "Invalid input. Please enter a valid integer between 0 and 100.\n";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                Courses_Grades[option - 1] = newGrade;
+                Student_Information[User_Index].Edited_Grade(Courses_Grades);
+                cout << "Grade updated successfully" << endl;
+            }
+            else {
+                cout << "Invalid input, please try again" << endl;
+                continue;
+            }
+            Courses_added_char = 'y';
+            cout << "Do you want to update another course (y/n): ";
+            cin >> Courses_added_char;
+            if (Courses_added_char == 'n' || Courses_added_char == 'N') {
+                break;
+            }
+        } while (true);
+    }
+    void select_student() {
+        displayStudents();
+		cout << "Enter the student number:";
+        int student_number;
+        cin >> student_number;
+        if (student_number > 0 && student_number <= Student_Information.size()) {
+			User_Index = student_number - 1;
+		}
+        else {
+            cout << "Invalid input, please try again" << endl;
+        }
+	}
 };
 #endif

@@ -11,9 +11,8 @@ private:
 	int creditHours;
 	string department;
 	int course_num;
-	double grade;
 public:
-	Course() {
+	Course(){
 		courseName = " ";
 		courseCode = " ";
 		creditHours = 0;
@@ -78,7 +77,7 @@ public:
 			}
 		} while (creditHours >= 0 || creditHours <= 4);
 	}
-	void setGrade() {
+	/*void setGrade() {
 		do {
 			cout << "Enter the grade of the course (0:100): ";
 			if (!(cin >> grade)) {
@@ -99,6 +98,6 @@ public:
 	}
 	double getGrade() {
 		return grade;
-	}
+	}*/
 };
 #endif
