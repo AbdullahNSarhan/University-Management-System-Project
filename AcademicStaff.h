@@ -26,6 +26,7 @@ public:
     void Schedule_OfficeHours() {
     }
     void AcademicStaff_Menu() {
+		getAcademicStaff_information();
 		cout << "Welcome to the Academic Staff Menu" << endl;
 		cout << "1-View Courses Taught" << endl;
         cout << "2-Teach Course" << endl;
@@ -65,5 +66,62 @@ public:
     vector <int> get_CoursesTaught() {
         return CoursesTaught;
     }
+    void EditAcademicStaff_information() {
+		do {
+			system("CLS");
+			getAcademicStaff_information();
+			cout << "====================================" << endl;
+			cout << "What would you like to edit?" << endl;
+			cout << "1-Staff name" << endl;
+			cout << "2-Staff ID" << endl;
+			cout << "3-Staff college" << endl;
+			cout << "4-Staff department" << endl;
+			cout << "5-Staff role" << endl;
+			cout << "6-Staff email" << endl;
+			cout << "7-Staff password" << endl;
+			cout << "8-Exit" << endl;
+			cin >> int_check;
+			switch (int_check) {
+			case 1:
+				cout << "Enter new Staff name: ";
+				cin.ignore();
+				getline(cin, Username);
+				break;
+			case 2:
+				cout << "Enter new Staff ID: ";
+				cin >> UserID;
+				break;
+			case 3:
+				cout << "Enter new Staff college: ";
+				cin.ignore();
+				getline(cin, college);
+				break;
+			case 4:
+				cout << "Enter new Staff department: ";
+				cin.ignore();
+				getline(cin, department);
+				break;
+			case 5:
+				cout << "Enter new Staff role: ";
+				cin >> Role;
+				break;
+			case 6:
+				cout << "Enter new Staff email: ";
+				cin.ignore();
+				getline(cin, Email);
+				break;
+			case 7:
+				cout << "Enter new Staff password: ";
+				cin.ignore();
+				getline(cin, Password);
+				break;
+			case 8:
+				break;
+			default:
+				cout << "Invalid input" << endl;
+				break;
+			}
+		} while (int_check != 8);
+	}
 };
 #endif

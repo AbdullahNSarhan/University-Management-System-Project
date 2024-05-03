@@ -93,6 +93,7 @@ public:
      void Edit_StudentInformation() {
          int choice = 0;
          do{   
+             system("cls");
              GetStudent_information();
 		 cout << "what do you want to edit?\n"
 			  << "1- Name\n"
@@ -102,7 +103,7 @@ public:
 			  << "5- Role\n"
 			  << "6- Email\n"
 			  << "7- Password\n"
-              << "8- Enroll cource \n";
+              << "8- Exit \n";
          cin >> choice;
          switch (choice) {
          case 1:

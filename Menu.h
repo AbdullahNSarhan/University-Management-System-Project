@@ -119,10 +119,6 @@ public:
             return false;
         }
     }
-    void executeOption()
-    {
-
-    }
     bool login()
     {
         cout << "Enter your ID: ";
@@ -190,6 +186,7 @@ public:
 
         do
         {
+            system("CLS");
             adminMenu();
             cout << "Enter your choice: ";
 
@@ -215,28 +212,8 @@ public:
                 displayStudents();
                 break;
             case 4:
-                do {
-                    system("CLS");
-                    select_student();
-                    cout << "What would you like to edit?\n";
-                    cout << "1-Edit Student Information\n"
-                         << "2-Edit Student Courses\n"
-                         << "3-Exit\n";
-                    cout << "Enter option number: " << endl;
-                    cin >> option;
-                    switch (option)
-                    {
-                    case 1:
-                        Student_Information[User_Index].Edit_StudentInformation();
-                        break;
-                    case 2:
-                        Student_DisplayEnrolledCourses();
-                        Student_SetEnrolledCourses();
-                        break;
-                    default:
-                        break;
-                    }
-                } while (option != 3);
+                system("CLS");
+				EditStudent();
 				break;
             case 5:
                 system("CLS");
@@ -244,7 +221,7 @@ public:
                 break;
             case 6:
                 system("CLS");
-                /*remove*/
+                removeAcademicStaff();
                 break;
             case 7:
                 system("CLS");
@@ -252,7 +229,7 @@ public:
                 break;
             case 8:
                 system("CLS");
-                /*editAcademicStaff();*/
+                EditAcademicStaff();
                 break;
             case 9:
                 system("CLS");
@@ -307,16 +284,30 @@ public:
     }
     void removeStudent()
     {
-        authentication = login();
-        if (!authentication) {
-            return;
-        }
         displayStudents();
         int index;
         cout << "Enter the index of the student you want to remove: ";
         cin >> index;
-        Student_Information.erase(Student_Information.begin() + index);
+        if(index > 0 && index <= Student_Information.size()){
+			Student_Information.erase(Student_Information.begin() + index - 1);
+		}
+		else{
+			cout << "Invalid input, please try again" << endl;
+		}
     }
+    void removeAcademicStaff()
+	{
+		displayAcademicStaff();
+		int index;
+		cout << "Enter the index of the academic staff you want to remove: ";
+		cin >> index;
+        if(index > 0 && index <= AcademicStaff_Information.size()){
+		AcademicStaff_Information.erase(AcademicStaff_Information.begin() + index - 1);
+        }
+		else{
+			cout << "Invalid input, please try again" << endl;
+		}
+	}
     void Add_Courses() {
         do {
             course_obj.setCourse();
@@ -407,7 +398,7 @@ public:
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
             if (option > 0 && option <= CoursesEnrolled.size()) {
-                AcademicStaff_Information[User_Index].Set_TeachCourse(option);
+                AcademicStaff_Information[User_Index].Set_TeachCourse(option-1);
                 cout << "Course added successfully" << endl;
             }
             else if (CoursesEnrolled.size() == 0) {
@@ -429,7 +420,12 @@ public:
         Courses_Numbers = AcademicStaff_Information[User_Index].get_CoursesTaught();
         cout << "The Courses are :\n";
         for (int i = 0; i < Courses_Numbers.size(); i++) {
-            cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
+            if (Courses_Numbers[i] >= 0 && Courses_Numbers[i] < CoursesEnrolled.size()) {
+                cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
+            }
+            else {
+                cout << "No courses available" << endl;
+            }
         }
     }
     void Student_SetEnrolledCourses() {
@@ -581,6 +577,63 @@ public:
         else {
             cout << "Invalid input, please try again" << endl;
         }
+	}
+    void select_AcademicStaff() {
+		displayAcademicStaff();
+		cout << "Enter the academic staff number:";
+		int academicStaff_number;
+		cin >> academicStaff_number;
+		if (academicStaff_number > 0 && academicStaff_number <= AcademicStaff_Information.size()) {
+			User_Index = academicStaff_number - 1;
+		}
+		else {
+			cout << "Invalid input, please try again" << endl;
+		}
+	}
+    void EditAcademicStaff(){
+        select_AcademicStaff();
+        AcademicStaff_Information[User_Index].EditAcademicStaff_information();
+    }
+    void EditStudent() {
+        int option;
+        do {
+            select_student();
+            cout << "What would you like to edit?\n";
+            cout << "1-Edit Student Information\n"
+                 << "2-Edit Student Courses\n"
+                 << "3-Exit\n";
+            cout << "Enter option number: " << endl;
+            while (!(cin >> option))
+            {
+                cout << "Invalid input. Please enter a valid integer.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            switch (option)
+            {
+            case 1:
+                if (User_Index >= 0 && User_Index < Student_Information.size()) {
+                    Student_Information[User_Index].Edit_StudentInformation();
+                }
+                else {
+                    cout << "Invalid input, please try again" << endl;
+                }
+                break;
+            case 2:
+                if (User_Index >= 0 && User_Index < Student_Information.size()) {
+                    Student_DisplayEnrolledCourses();
+                    Student_SetEnrolledCourses();
+                }
+                else {
+                    cout << "Invalid input, please try again" << endl;
+                }
+                break;
+            case 3:
+                break;
+            default:
+                break;
+            }
+        } while (option != 3);
 	}
 };
 #endif
