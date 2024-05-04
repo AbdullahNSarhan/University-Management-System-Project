@@ -77,27 +77,5 @@ public:
 			}
 		} while (creditHours >= 0 || creditHours <= 4);
 	}
-	/*void setGrade() {
-		do {
-			cout << "Enter the grade of the course (0:100): ";
-			if (!(cin >> grade)) {
-				cin.clear();
-				cin.ignore(numeric_limits<streamsize>::max(), '\n');
-				cout << "Invalid input. Please enter a number (0:100).\n";
-				continue;
-			}
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-			if (grade >= 0 && grade <= 100) {
-				break;
-			}
-			else {
-				cout << "The grade is not valid\n";
-			}
-		} while (grade >= 0 || grade <= 100);
-	}
-	double getGrade() {
-		return grade;
-	}*/
 };
 #endif

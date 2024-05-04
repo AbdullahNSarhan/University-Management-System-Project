@@ -1,0 +1,27 @@
+====================
+Student no.1
+====================
+Name: Ali
+ID: 123456789
+Mail: ali.ali
+Password: 123456789
+College: eng
+Department: com
+====================
+Student no.2
+====================
+Name: ahmed
+ID: 12345678
+Mail: ahmed.ahmed
+Password: 12345678
+College: eng
+Department: com
+====================
+Student no.3
+====================
+Name: abdullah
+ID: 1234567
+Mail: abdullah.abdullah
+Password: 1234567
+College: com
+Department: eng

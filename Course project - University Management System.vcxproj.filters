@@ -42,4 +42,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Admin.txt" />
+    <Text Include="Course.txt" />
+    <Text Include="Student.txt" />
+    <Text Include="AcademicStaff.txt" />
+  </ItemGroup>
 </Project>

@@ -147,5 +147,8 @@ public:
          }
 		 } while (choice != 8);
 	 }
+     string getStudentDepartment() {
+		 return Student_department;
+	 }
 };
 #endif

@@ -1,0 +1,16 @@
+====================
+Academic Staff no.1
+====================
+Name: abdo
+ID: 123456
+Mail: abdo.abdo
+Password: 123456
+College: com
+====================
+Academic Staff no.2
+====================
+Name: aliow
+ID: 12345
+Mail: aliow,aliow
+Password: 12345
+College: cooo

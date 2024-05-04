@@ -8,6 +8,7 @@
 #include "User.h"
 #include <vector>
 #include "AcademicStaff.h"
+#include "FileInput.h"
 using namespace std;
 
 class menu
@@ -28,6 +29,7 @@ private:
     int User_Index = 0;
     bool authentication;
     char Courses_added_char;
+    FileInput file;
 public:
     void displayMenu()
     {
@@ -178,7 +180,8 @@ public:
             << "10-Display courses\n"
             << "11-University options\n"
             << "12-Change admin information\n"
-            << "13-Exit\n";
+            << "13-Save Data in file\n"
+            << "14-Exit\n";
     }
     void adminOption()
     {
@@ -248,12 +251,16 @@ public:
                 break;
             case 13:
                 system("CLS");
+				Output_File();
+				break;
+            case 14:
+                system("CLS");
                 break;
             default:
                 cout << "Invalid option. Please choose again.\n";
                 break;
             }
-        } while (option != 13);
+        } while (option != 14);
     }
     void addStudents()
     {
@@ -649,5 +656,27 @@ public:
 			cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << " Grade: " << Courses_Grades[i] << endl;
 		}
 	}
+    vector <Student> getStudentInformation() {
+		return Student_Information;
+	}
+    vector <AcademicStaff> getAcademicStaffInformation() {
+        return AcademicStaff_Information;
+    }
+    vector <Course> getCourseInformation() {
+		return CoursesEnrolled;
+	}
+    User getAdminInformation() {
+		return Admin_Information;
+	}
+    void Output_File() {
+        file.readStudent(Student_Information);
+        file.readAcademicStaff(AcademicStaff_Information);
+        file.readCourse(CoursesEnrolled);
+        file.readAdmin(Admin_Information);
+        file.writeAdmin();
+        file.writeAcademicStaff();
+        file.writeStudent();
+        file.writeCourse();
+    }
 };
 #endif
