@@ -18,6 +18,7 @@ private:
 	vector <Student> student;
 	vector <Course> course;
 	User Admin;
+	University university;
 public:
 	FileInput(){}
 	void readAcademicStaff(vector <AcademicStaff> aca_Staff){
@@ -31,6 +32,9 @@ public:
 	}
 	void readAdmin(User adm){
 		Admin = adm;
+	}
+	void readUniInfo(University Uni) {
+		university = Uni;
 	}
 	void writeAcademicStaff() {
 		ofstream file;
@@ -85,6 +89,28 @@ public:
 			 << "Mail: " <<Admin.getUserMail() << endl
 			 << "Password: " <<Admin.getUserPassword() << endl
 			 << "College: " <<Admin.getUserCollege() << endl;
+	}
+	void writeUniInfo() {
+		vector <string> college_list;
+		vector <vector<string>> department_list;
+		college_list = university.getCollegesInfo();
+		department_list = university.getDepartmentsInfo();
+		ofstream file;
+		file.open("University.txt");
+		file << university.getUniversityInfo() << endl;
+		file << "\nDepartments in each college:\n";
+		for (size_t i = 0; i < college_list.size(); ++i) {
+			if (department_list[i].empty()) {
+				file << "No departments added yet.\n";
+			}
+			else {
+				file << "College: " << college_list[i] << endl;
+				for (size_t j = 0; j < department_list[i].size(); ++j) {
+					file << "- " << department_list[i][j] << endl;
+				}
+			}
+			file << endl;
+		}
 	}
 };
 #endif

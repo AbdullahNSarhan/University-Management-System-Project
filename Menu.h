@@ -656,27 +656,20 @@ public:
 			cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << " Grade: " << Courses_Grades[i] << endl;
 		}
 	}
-    vector <Student> getStudentInformation() {
-		return Student_Information;
-	}
-    vector <AcademicStaff> getAcademicStaffInformation() {
-        return AcademicStaff_Information;
-    }
-    vector <Course> getCourseInformation() {
-		return CoursesEnrolled;
-	}
-    User getAdminInformation() {
-		return Admin_Information;
-	}
     void Output_File() {
         file.readStudent(Student_Information);
         file.readAcademicStaff(AcademicStaff_Information);
         file.readCourse(CoursesEnrolled);
         file.readAdmin(Admin_Information);
+        file.readUniInfo(Uni_SelectFunction);
         file.writeAdmin();
         file.writeAcademicStaff();
         file.writeStudent();
         file.writeCourse();
+        file.writeUniInfo();
+        cout << "The data saved successfully." << endl
+             << "==============================";
     }
+
 };
 #endif
