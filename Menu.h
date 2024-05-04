@@ -502,14 +502,23 @@ public:
                 Student_Information[User_Index].changePassword();
                 break;
             case 5:
+                system("CLS");
+                ShowAcademicStaff_OfficeHours();
+            case 6:
                 cout << "You have been logged out\n";
                 break;
             default:
                 cout << "Invalid option\n";
                 break;
             }
-        } while (option != 5);
+        } while (option != 6);
 
+    }
+    void ShowAcademicStaff_OfficeHours() {
+        for(int i = 0; i < AcademicStaff_Information.size(); i++){
+            cout << AcademicStaff_Information[i].getUserName() << " Office Hours:";
+			AcademicStaff_Information[i].get_OfficeHours();
+		}
     }
     void calculateGPA() {
         Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();

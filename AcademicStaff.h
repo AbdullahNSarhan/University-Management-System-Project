@@ -28,6 +28,9 @@ public:
 		cout << "Enter the time: ";
 		getline(cin, time);
     }
+	void get_OfficeHours() {
+		cout << "Office Hours: " << day << " at " << time << endl;
+	}
     void AcademicStaff_Menu() {
 		getAcademicStaff_information();
 		cout << "Welcome to the Academic Staff Menu" << endl;
