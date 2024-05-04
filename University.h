@@ -206,5 +206,14 @@ public:
         cin.ignore();
         cout << "University information updated successfully.\n";
     }
+    string getUniversityInfo(){
+        return "University Name: " + name + "\nLocation: " + location;
+	}
+    vector <string> getCollegesInfo() {
+		return colleges;
+	}
+    vector <vector<string>> getDepartmentsInfo() {
+		return departments;
+	}
 };
 #endif

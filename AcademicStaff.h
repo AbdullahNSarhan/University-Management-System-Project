@@ -15,15 +15,18 @@ private:
     string department;
     char char_check;
 	int int_check;	
+	string day;
+	string time;
 public:   
     void Set_TeachCourse(int course_num) {     
 		CoursesTaught.push_back(course_num);
-    }
-    void viewStudentList() {
-    }
-    void update_studentsGrade() {
-	}
-    void Schedule_OfficeHours() {
+    } 
+    void set_OfficeHours() {
+		cout << "Enter the day of the week: ";
+		cin.ignore();
+		getline(cin, day);
+		cout << "Enter the time: ";
+		getline(cin, time);
     }
     void AcademicStaff_Menu() {
 		getAcademicStaff_information();

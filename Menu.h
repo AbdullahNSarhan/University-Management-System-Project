@@ -379,6 +379,7 @@ public:
                 break;
             case 5:
                 system("CLS");
+                Schedule_AcademicStaff_OfficeHours();
                 break;
             case 6:
                 cout << "Exiting Academic Staff Menu" << endl;
@@ -389,6 +390,9 @@ public:
             }
         } while (option != 6);
     }
+    void Schedule_AcademicStaff_OfficeHours() {
+		AcademicStaff_Information[User_Index].set_OfficeHours();
+	}
     void AcademicStaff_SetTeachingCourses() {
         cout << "The Courses are :\n";
         for (int i = 0; i < CoursesEnrolled.size(); i++) {
@@ -575,6 +579,7 @@ public:
             switch (option)
             {
             case 1:
+                system("CLS");
                 if (User_Index >= 0 && User_Index < Student_Information.size()) {
                     Student_Information[User_Index].Edit_StudentInformation();
                 }
@@ -583,6 +588,7 @@ public:
                 }
                 break;
             case 2:
+                system("CLS");
                 if (User_Index >= 0 && User_Index < Student_Information.size()) {
                     Student_DisplayEnrolledCourses();
                     Student_SetEnrolledCourses();
@@ -656,27 +662,20 @@ public:
 			cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << " Grade: " << Courses_Grades[i] << endl;
 		}
 	}
-    vector <Student> getStudentInformation() {
-		return Student_Information;
-	}
-    vector <AcademicStaff> getAcademicStaffInformation() {
-        return AcademicStaff_Information;
-    }
-    vector <Course> getCourseInformation() {
-		return CoursesEnrolled;
-	}
-    User getAdminInformation() {
-		return Admin_Information;
-	}
     void Output_File() {
         file.readStudent(Student_Information);
         file.readAcademicStaff(AcademicStaff_Information);
         file.readCourse(CoursesEnrolled);
         file.readAdmin(Admin_Information);
+        file.readUniInfo(Uni_SelectFunction);
         file.writeAdmin();
         file.writeAcademicStaff();
         file.writeStudent();
         file.writeCourse();
+        file.writeUniInfo();
+        cout << "The data saved successfully." << endl
+             << "==============================";
     }
+
 };
 #endif
