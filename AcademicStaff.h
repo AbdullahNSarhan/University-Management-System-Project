@@ -30,7 +30,7 @@ public:
 		cout << "Welcome to the Academic Staff Menu" << endl;
 		cout << "1-View Courses Taught" << endl;
         cout << "2-Teach Course" << endl;
-		cout << "3-Grade Assignment" << endl;
+		cout << "3-Set Student Grades" << endl;
 		cout << "4-Change password" << endl;
 		cout << "5-Schedule Office Hours" << endl;
 		cout << "6-Exit" << endl;

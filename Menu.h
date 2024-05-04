@@ -186,7 +186,6 @@ public:
 
         do
         {
-            system("CLS");
             adminMenu();
             cout << "Enter your choice: ";
 
@@ -365,7 +364,7 @@ public:
                 break;
             case 3:
                 system("CLS");
-                /*AcademicStaff_Information[User_Index].updateGrade();*/
+                Update_StudentGrade();
                 break;
             case 4:
                 system("CLS");
@@ -485,7 +484,7 @@ public:
                 break;
             case 3:
                 system("CLS");
-                Update_StudentGrade();
+                Show_StudentGrade();
                 break;
             case 4:
                 system("CLS");
@@ -521,51 +520,6 @@ public:
         }
         cout << "Student total GPA is : " << sum1 / sum2 << endl;
     }
-    void Update_StudentGrade() {
-        Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
-        Courses_Grades = Student_Information[User_Index].get_Grades();
-        cout << "The Courses are :\n";
-        if (Courses_Numbers.size() == 0) {
-			cout << "No courses available" << endl;
-			return;
-		}
-        for (int i = 0; i < Courses_Numbers.size(); i++) {
-            cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
-        }
-        do {
-            cout << "Please enter the number of course you want to update: ";
-            int option;
-            while (!(cin >> option))
-            {
-                cout << "Invalid input. Please enter a valid integer.\n";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-            if (option > 0 && option <= Courses_Numbers.size()) {
-                cout << "Enter the new grade: ";
-                double newGrade;
-                while (!(cin >> newGrade) && newGrade >= 0 && newGrade <= 100)
-                {
-                    cout << "Invalid input. Please enter a valid integer between 0 and 100.\n";
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                }
-                Courses_Grades[option - 1] = newGrade;
-                Student_Information[User_Index].Edited_Grade(Courses_Grades);
-                cout << "Grade updated successfully" << endl;
-            }
-            else {
-                cout << "Invalid input, please try again" << endl;
-                continue;
-            }
-            Courses_added_char = 'y';
-            cout << "Do you want to update another course (y/n): ";
-            cin >> Courses_added_char;
-            if (Courses_added_char == 'n' || Courses_added_char == 'N') {
-                break;
-            }
-        } while (true);
-    }
     void select_student() {
         displayStudents();
 		cout << "Enter the student number:";
@@ -592,7 +546,9 @@ public:
 	}
     void EditAcademicStaff(){
         select_AcademicStaff();
-        AcademicStaff_Information[User_Index].EditAcademicStaff_information();
+        if (User_Index >= 0 && User_Index < AcademicStaff_Information.size()){
+            AcademicStaff_Information[User_Index].EditAcademicStaff_information();
+        }
     }
     void EditStudent() {
         int option;
@@ -634,6 +590,64 @@ public:
                 break;
             }
         } while (option != 3);
+	}
+    void Update_StudentGrade() {
+        select_student();
+        Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
+        Courses_Grades = Student_Information[User_Index].get_Grades();
+        cout << "The Courses are :\n";
+        if (Courses_Numbers.size() == 0) {
+            cout << "No courses available" << endl;
+            return;
+        }
+        for (int i = 0; i < Courses_Numbers.size(); i++) {
+            cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << endl;
+        }
+        do {
+            cout << "Please enter the number of course you want to update: ";
+            int option;
+            while (!(cin >> option))
+            {
+                cout << "Invalid input. Please enter a valid integer.\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            if (option > 0 && option <= Courses_Numbers.size()) {
+                cout << "Enter the new grade: ";
+                double newGrade;
+                while (!(cin >> newGrade) && newGrade >= 0 && newGrade <= 100)
+                {
+                    cout << "Invalid input. Please enter a valid integer between 0 and 100.\n";
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                }
+                Courses_Grades[option - 1] = newGrade;
+                Student_Information[User_Index].Edited_Grade(Courses_Grades);
+                cout << "Grade updated successfully" << endl;
+            }
+            else {
+                cout << "Invalid input, please try again" << endl;
+                continue;
+            }
+            Courses_added_char = 'y';
+            cout << "Do you want to update another course (y/n): ";
+            cin >> Courses_added_char;
+            if (Courses_added_char == 'n' || Courses_added_char == 'N') {
+                break;
+            }
+        } while (true);
+    }
+    void Show_StudentGrade() {
+		Courses_Numbers = Student_Information[User_Index].get_CoursesEnrolled();
+		Courses_Grades = Student_Information[User_Index].get_Grades();
+		cout << "The Courses are :\n";
+		if (Courses_Numbers.size() == 0) {
+			cout << "No courses available" << endl;
+			return;
+		}
+		for (int i = 0; i < Courses_Numbers.size(); i++) {
+			cout << i + 1 << "- " << CoursesEnrolled[Courses_Numbers[i]].getCourseName() << " Grade: " << Courses_Grades[i] << endl;
+		}
 	}
 };
 #endif

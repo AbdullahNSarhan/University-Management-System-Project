@@ -55,7 +55,7 @@ public:
          cout << "\n=========options=========\n"
               << "1- Show Enrolled Course\n"
 			  << "2- Calculate GPA\n"
-			  << "3- Update Grade\n"
+			  << "3- Show course Grade\n"
               << "4- change password\n"
 			  << "5- Logout\n";
      }
