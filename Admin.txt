@@ -1,8 +1,0 @@
-====================
-Admin
-====================
-Name: admin
-ID: 0
-Mail: 
-Password: admin
-College: 
