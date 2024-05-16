@@ -56,8 +56,8 @@ public:
               << "1- Show Enrolled Course\n"
 			  << "2- Calculate GPA\n"
 			  << "3- Show course Grade\n"
-              << "4- show Academic Stuffs Office Hours\n"
-              << "5- change password\n"
+              << "4- change password\n"
+              << "5- show Academic Stuffs Office Hours\n"
 			  << "6- Logout\n";
      }
      void SetStudent_information() {

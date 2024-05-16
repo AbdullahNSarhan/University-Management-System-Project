@@ -1,0 +1,7 @@
+University Name: Abdo University
+Location: 7th of October
+
+Departments in each college:
+College: eng
+- com
+
